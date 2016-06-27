@@ -16,8 +16,8 @@
 *.depend
 *.psess
 *.user
-.db
-.opendb
+*.db
+*.opendb
 .vs
 Debug
 Release
