@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <crtdbg.h>
 
+wchar_t wc(const CHAR_INFO& c)
+{
+	return c.Char.UnicodeChar ? c.Char.UnicodeChar : L' ';
+}
+
 void main()
 {
 	_ASSERTE(FALSE);
@@ -30,12 +35,12 @@ void main()
 		L"Before: {'%c' U+%X 0x%04X} {'%c' U+%X 0x%04X} {'%c' U+%X 0x%04X}\n"
 		L"After:  {'%c' U+%X 0x%04X} {'%c' U+%X 0x%04X} {'%c' U+%X 0x%04X}\n",
 		rcRead.Left, rcRead.Top, rcRead.Right, rcRead.Bottom,
-		chr_before[0].Char.UnicodeChar, chr_before[0].Char.UnicodeChar, chr_before[0].Attributes,
-		chr_before[1].Char.UnicodeChar, chr_before[1].Char.UnicodeChar, chr_before[1].Attributes,
-		chr_before[2].Char.UnicodeChar, chr_before[2].Char.UnicodeChar, chr_before[2].Attributes,
-		chr_after[0].Char.UnicodeChar, chr_after[0].Char.UnicodeChar, chr_after[0].Attributes,
-		chr_after[1].Char.UnicodeChar, chr_after[1].Char.UnicodeChar, chr_after[1].Attributes,
-		chr_after[2].Char.UnicodeChar, chr_after[2].Char.UnicodeChar, chr_after[2].Attributes
+		wc(chr_before[0]), chr_before[0].Char.UnicodeChar, chr_before[0].Attributes,
+		wc(chr_before[1]), chr_before[1].Char.UnicodeChar, chr_before[1].Attributes,
+		wc(chr_before[2]), chr_before[2].Char.UnicodeChar, chr_before[2].Attributes,
+		wc(chr_after[0]), chr_after[0].Char.UnicodeChar, chr_after[0].Attributes,
+		wc(chr_after[1]), chr_after[1].Char.UnicodeChar, chr_after[1].Attributes,
+		wc(chr_after[2]), chr_after[2].Char.UnicodeChar, chr_after[2].Attributes
 		);
 	DWORD nLen = wcslen(szInfo);
 	WriteConsoleW(hOut, szInfo, nLen, &nLen, NULL);
