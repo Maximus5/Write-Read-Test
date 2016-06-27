@@ -32,8 +32,8 @@ void main()
 	// show data
 	wchar_t szInfo[512];
 	swprintf_s(szInfo, L"\nReading Rect: {%i,%i}-{%i,%i}\n"
-		L"Before: {'%c' U+%X x%04X} {'%c' U+%X x%04X} {'%c' U+%X x%04X} {'%c' U+%X x%04X}\n"
-		L"After:  {'%c' U+%X x%04X} {'%c' U+%X x%04X} {'%c' U+%X x%04X} {'%c' U+%X x%04X}\n",
+		L"Before: {'%c' U+%X x%02X} {'%c' U+%X x%02X} {'%c' U+%X x%02X} {'%c' U+%X x%02X}\n"
+		L"After:  {'%c' U+%X x%02X} {'%c' U+%X x%02X} {'%c' U+%X x%02X} {'%c' U+%X x%02X}\n",
 		rcRead.Left, rcRead.Top, rcRead.Right, rcRead.Bottom,
 		wc(chr_before[0]), chr_before[0].Char.UnicodeChar, chr_before[0].Attributes,
 		wc(chr_before[1]), chr_before[1].Char.UnicodeChar, chr_before[1].Attributes,
