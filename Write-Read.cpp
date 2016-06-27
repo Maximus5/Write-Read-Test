@@ -12,6 +12,8 @@ void main()
 	COORD cr0 = {}, crSize = {3,1};
 	SMALL_RECT rcRead = {csbi.dwCursorPosition.X, csbi.dwCursorPosition.Y, csbi.dwCursorPosition.X+2, csbi.dwCursorPosition.Y};
 	wchar_t szData[] = {L"世 "}; // 2 wchar_t
+	wchar_t szASCII[80] = L"012345678901234567890123456789012345678901234567890123456789012345678901234567\n";
+	wchar_t szCJK[80] = L"世界中のあらゆる情報を検索するためのツールを提供しています。さまざまな検索機能 を活用して、お探しの情報を見つけてください。さまざまな検索機能 を活用して、\n";
 	DWORD nWritten = 0;
 	GetConsoleScreenBufferInfo(hOut, &csbi);
 	// before
@@ -37,4 +39,7 @@ void main()
 		);
 	DWORD nLen = wcslen(szInfo);
 	WriteConsoleW(hOut, szInfo, nLen, &nLen, NULL);
+	// At last, we print 78 single-width and 78 CJK characters
+	WriteConsoleW(hOut, szASCII, wcslen(szASCII), &nLen, NULL);
+	WriteConsoleW(hOut, szCJK, wcslen(szCJK), &nLen, NULL);
 }
