@@ -7,14 +7,14 @@
 * Console can't store or show any characters out of OEM CP. So all CJK glyphs will be displayed as `?`.
 * One (broken) CJK glyph takes one cell, so 78 CJK glyphs take same space as 78 ASCII chars.
 
-screens/non-dbcs-raster.png
+![screens/non-dbcs-raster.png](https://github.com/Maximus5/Write-Read-Test/raw/master/screens/non-dbcs-raster.png)
 
 ### TTF font is selected in console
 
 * Console is working in Unicode mode and **can** store Unicode codepoints, and may display them, if you have configured FontLink.
 * One CJK glyph also takes one cell, so 78 CJK glyphs take same space as 78 ASCII chars.
 
-screens/non-dbcs-unicode.png
+![screens/non-dbcs-unicode.png](https://github.com/Maximus5/Write-Read-Test/raw/master/screens/non-dbcs-unicode.png)
 
 ## DBCS enabled OS (Chinese, Japanese, etc).
 
@@ -29,7 +29,7 @@ The crazyness begins. I tested CP 936.
 * Unicode console API returns each CJK in **one** `CHAR_INFO` and do not use `COMMON_LVB_LEADING_BYTE` and `COMMON_LVB_TRAILING_BYTE` flags.
 * If console application tries to write more than (console_width/2) CJK glyphs, the string is automatically **folded to next line**.
 
-screens/dbcs-raster.png
+![screens/dbcs-raster.png](https://github.com/Maximus5/Write-Read-Test/raw/master/screens/dbcs-raster.png)
 
 ### TTF font is selected in console
 
@@ -37,7 +37,7 @@ screens/dbcs-raster.png
 * But Unicode console API returns each CJK as **two** consecutive `CHAR_INFO` first with `COMMON_LVB_LEADING_BYTE` (0x100) and second with `COMMON_LVB_TRAILING_BYTE` (0x200) flags.
 * Same as above, if console application tries to write more than (console_width/2) CJK glyphs, the string is automatically **folded to next line**.
 
-screens/dbcs-unicode.png
+![screens/dbcs-unicode.png](https://github.com/Maximus5/Write-Read-Test/raw/master/screens/dbcs-unicode.png)
 
 ## Bottom line
 
